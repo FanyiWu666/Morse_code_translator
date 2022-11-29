@@ -1,4 +1,6 @@
 	#include <xc.inc>
+extern	UART_Setup, UART_Transmit_Message
+extern  LCD_Setup, LCD_Write_Message, LCD_Send_Byte_D
 
 psect	code, abs
 	
