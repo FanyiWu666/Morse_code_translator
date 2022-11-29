@@ -33,3 +33,8 @@ UART_Transmit_Byte:	    ; Transmits byte stored in W
     movwf   TXREG1, A
     return
 
+UART_Load_Byte:
+    btfss   RC1IF
+    bra	    UART_Load_Byte
+    movwf   RCREG1, A
+    return
