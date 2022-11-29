@@ -1,6 +1,6 @@
 #include <xc.inc>
       
-global  Keypad_Setup, Key_pressed, row_module, column_module, decode
+global  Encode_Setup, Key_pressed, row_module, column_module, decode
     
   
 
