@@ -36,5 +36,5 @@ UART_Transmit_Byte:	    ; Transmits byte stored in W
 UART_Load_Byte:
     btfss   RC1IF
     bra	    UART_Load_Byte
-    movwf   RCREG1, A
+    movf    RCREG1, W, A
     return
