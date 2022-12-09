@@ -39,7 +39,7 @@ UART_Load_Byte:	    ; Loads RECEIVED byte to W
     btfss   RC1IF	    ; RC1IF is set when TXREG1 is empty
     bra	    UART_Load_Byte
     movf    RCREG1, W ;READ 8-BIT DATA ONLY
-    movwf   result
+    ;movwf   result
     ;movlw   0x00
     ;movwf   RCREG1
     return   
