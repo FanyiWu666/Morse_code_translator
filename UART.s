@@ -1,6 +1,6 @@
 #include <xc.inc>
     
-global  UART_Setup, UART_Transmit_Message
+global  UART_Setup, UART_Transmit_Message, UART_Load_Byte
 
 psect	udata_acs   ; reserve data space in access ram
 UART_counter: ds    1	    ; reserve 1 byte for variable UART_counter
@@ -33,3 +33,8 @@ UART_Transmit_Byte:	    ; Transmits byte stored in W
     movwf   TXREG1, A
     return
 
+UART_Load_Byte:
+    btfss   RC1IF
+    bra	    UART_Load_Byte
+    movf    RCREG1, W, A
+    return
