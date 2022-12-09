@@ -19,15 +19,25 @@ setup:   bcf          CFGS     ; point to Flash program memory
                 call          LCD_Setup          ; setup UART
                 goto       start
 
-                ; ******* Main programme ****************************************
-start:     call          UART_Transmit_Byte
-test:       call    UART_Load_Byte
-                ;bra        test
-                
-                call          Encode_start
-                ;call        LCD_Write_Message
+	; ******* Main programme ****************************************
+start:	call	UART_Transmit_Byte
+	call	delay
+	goto	UART_test
 
-                goto       $                              ; goto current line in code   
+UART_test:	call    UART_Load_Byte
+		;bra	UART_test
+		movlw	0x09
+		movwf	counter, A
+		decfsz	counter, A
+		goto	Encode_test
+	
+Encode_test:	call	Encode_start
+		;bra	Encode_test
+		goto	LCD_test
+		
+	
+LCD_test:       call	LCD_Write_Message
+		;bra	LCD_test
                 
                 
                 
