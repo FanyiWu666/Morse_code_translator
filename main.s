@@ -1,7 +1,7 @@
 #include <xc.inc>
 
 extrn	UART_Setup, UART_Transmit_Message, UART_Load_Byte, UART_Transmit_Byte  ; external subroutines
-extrn	LCD_Setup, LCD_Write_Message
+extrn	LCD_Setup, LCD_Write_Message, LCD_Send_Byte_D
 extrn	Encode_start
 	
 psect	udata_acs   ; reserve data space in access ram
@@ -20,25 +20,15 @@ setup:	bcf	CFGS	; point to Flash program memory
 	goto	start
 
 	; ******* Main programme ****************************************
-start:	call	UART_Transmit_Byte
-	call	delay
-	goto	UART_test
+start:     call          UART_Transmit_Byte
+test:       call    UART_Load_Byte
+            bra        test
+                
+            call          Encode_start
+            call        LCD_Write_Message
 
-UART_test:	call    UART_Load_Byte
-		bra	UART_test
-		movlw	0x09
-		movwf	counter, A
-		decfsz	counter, A
-		goto	Encode_test
-	
-Encode_test:	call	Encode_start
-		;bra	Encode_test
-		goto	LCD_test
-		
-	
-LCD_test:       call	LCD_Write_Message
-		;bra	LCD_test
-		
+                goto       $                              ; goto current line in code   
+
 
 	       
 	
