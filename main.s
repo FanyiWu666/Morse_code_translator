@@ -25,7 +25,7 @@ start:	call	UART_Transmit_Byte
 	goto	UART_test
 
 UART_test:	call    UART_Load_Byte
-		;bra	UART_test
+		bra	UART_test
 		movlw	0x09
 		movwf	counter, A
 		decfsz	counter, A
