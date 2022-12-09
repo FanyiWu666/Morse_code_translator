@@ -43,7 +43,7 @@ UART_Load_Byte:	    ; Loads RECEIVED byte to W
     ;movlw   0x00
     ;movwf   RCREG1
     return   
-        
+    
     ;NEED TO SPLIT THE INPUT MESSAGE 
     ;NEED TO CREATE A NEW ADDRESS MENMORY STORING ENOUGH INPUT CHARACTERS
 Loop_Load_message: ; Message stored at RCREG1
