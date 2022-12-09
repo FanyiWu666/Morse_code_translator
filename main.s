@@ -21,13 +21,13 @@ setup:	bcf	CFGS	; point to Flash program memory
 
 	; ******* Main programme ****************************************
 start:     call          UART_Transmit_Byte
-test:       call    UART_Load_Byte
-            bra        test
+test:      call          UART_Load_Byte
+           bra           test
                 
-            call          Encode_start
-            call        LCD_Write_Message
+           call          Encode_start
+           call          LCD_Write_Message
 
-                goto       $                              ; goto current line in code   
+           goto       $                              ; goto current line in code   
 
 
 	       
