@@ -2,7 +2,12 @@
 global LED_start
 
 extrn result
-
+    
+psect	udata_acs   ; reserve data space in access ram
+d1:ds 1    ; reserve one byte for counter in the delay routine
+d2:ds 1    ; reserve one byte for counter in the delay routine
+d3:ds 1    ; reserve one byte for counter in the delay routine
+    
 psect LED_code, class = CODE
 
 LED_start:
@@ -1312,6 +1317,21 @@ bra next0
   call delay ;#a ' '
   return
 
-
+delay:	
+    movlw 0x08
+    movwf d1
+    movlw 0x2F
+    movwf d2
+    movlw 0x03
+    movwf d3
+    
+delay_loop:
+    decfsz	d1, A	; decrement until zero
+    bra	delay_loop
+    decfsz	d2, A
+    bra delay_loop
+    decfsz	d3, A
+    bra delay_loop
+    return
 
 
