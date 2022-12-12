@@ -24,10 +24,9 @@ setup:	bcf	CFGS	; point to Flash program memory
 
 	; ******* Main programme ****************************************
 start:     ;movlw	 'A'
-	   movlw
 	   call          UART_Transmit_Byte
 test:      call          UART_Load_Byte
-	   call          Encode_start
+	   ;call          Encode_start
 	   call		 LED_start
            bra           test
                 
@@ -42,11 +41,11 @@ test:      call          UART_Load_Byte
 	
 delay:	
     movlw 0x08
-    movwf d1
+    movwf d1, A
     movlw 0x2F
-    movwf d2
+    movwf d2, A
     movlw 0x03
-    movwf d3
+    movwf d3, A
     
 delay_loop:
     decfsz	d1, A	; decrement until zero
