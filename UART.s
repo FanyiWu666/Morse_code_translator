@@ -22,6 +22,7 @@ UART_Setup:
 
 UART_Transmit_Message:	    ; Message stored at FSR2, length stored in W
     movwf   UART_counter, A
+
 UART_Loop_message:
     movf    POSTINC2, W, A ; ;Accsess the value in FSR2 and automatically increaments it by '1' afterwards, and move the value to W
     call    UART_Transmit_Byte
@@ -44,11 +45,3 @@ UART_Load_Byte:	    ; Loads RECEIVED byte to W
     ;movwf   RCREG1
     return   
     
-    ;NEED TO SPLIT THE INPUT MESSAGE 
-    ;NEED TO CREATE A NEW ADDRESS MENMORY STORING ENOUGH INPUT CHARACTERS
-Loop_Load_message: ; Message stored at RCREG1
-    movf    RCREG1, W, A ;Accsess the value in FSR2 and automatically increaments it by '1' afterwards, and move the value to W
-    call    UART_Load_Byte
-    decfsz  UART_counter, A
-    bra	    Loop_Load_message
-    return
