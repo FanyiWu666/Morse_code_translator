@@ -271,7 +271,7 @@ LED_start:
 
 ;I : . .
   nextI: ;Convert 'I' to Morse code
-  movlw 0x49 #ASCII number for character 'I'
+  movlw 0x49 ;#ASCII number for character 'I'
   cpfseq result, B 
   bra nextJ
                 
@@ -426,7 +426,7 @@ LED_start:
   return
 
   ;N: _ . 
-  nextM: ;#Convert 'N' to Morse code
+  nextN: ;#Convert 'N' to Morse code
   movlw 0x54 ;#ASCII number for character 'N'
   cpfseq result, B 
   bra nextO
@@ -593,7 +593,7 @@ bra nextS
   return
 
  ; S:. . .
-nextR: ;#Convert 'S' to Morse code
+nextS: ;#Convert 'S' to Morse code
 movlw 0x53 ;#ASCII number for character 'S'
 cpfseq result, B 
 bra nextT
@@ -1319,11 +1319,11 @@ bra next0
 
 delay:	
     movlw 0x08
-    movwf d1
+    movwf d1, A
     movlw 0x2F
-    movwf d2
+    movwf d2, A
     movlw 0x03
-    movwf d3
+    movwf d3, A
     
 delay_loop:
     decfsz	d1, A	; decrement until zero
