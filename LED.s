@@ -11,14 +11,14 @@ d3:ds 1    ; reserve one byte for counter in the delay routine
 psect LED_code, class = CODE
 
 LED_start:
+  movlw 0x00 ;all bits out
+  movwf TRISE, A
   movlw	0xff
   cpfseq result, B
   bra nextA
   retlw 0x00
   ;clrf TRISE (set PORTE to Outputs) ;Clears the contents of the specified register.
   ;Set TRISE low (All outputs)
-  movlw 0x00 ;all bits out
-  movwf TRISE, A
 
 ;A: . _
 
