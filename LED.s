@@ -1318,20 +1318,24 @@ bra next0
   return
 
 delay:	
-    movlw 0x08
+    movlw 0xFF
     movwf d1, A
-    movlw 0x2F
+    movlw 0xFF
     movwf d2, A
-    movlw 0x03
+    movlw 0xFF
     movwf d3, A
     
-delay_loop:
-    decfsz	d1, A	; decrement until zero
-    bra	delay_loop
-    decfsz	d2, A
-    bra delay_loop
-    decfsz	d3, A
-    bra delay_loop
+delay_0:
+    decfsz	d1, f	; decrement until zero
+    bra	delay_1
+delay_1:
+    decfsz	d2, f
+    bra delay_2
+delay_2:
+    decfsz	d3, f
+    bra delay_0
+    
+    
     return
 
 
