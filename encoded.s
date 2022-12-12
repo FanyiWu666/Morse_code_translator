@@ -7,6 +7,7 @@ extrn result, LCD_Send_Byte_D
     
 psect	encode_code, class=CODE
 Encode_start:
+    movlw   0xff
     cpfseq result, B
     bra next1
     retlw 0x00
