@@ -1318,11 +1318,11 @@ bra next0
   return
 
 delay:	
-    movlw 0x0A
+    movlw 0x0B
     movwf d1, A
-    movlw 0x0A
+    movlw 0x0B
     movwf d2, A
-    movlw 0x0A
+    movlw 0x0B
     movwf d3, A
     
 delay_0:
