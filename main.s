@@ -1,7 +1,7 @@
 #include <xc.inc>
 
-extrn	UART_Setup, UART_Transmit_Message, UART_Load_Byte, UART_Transmit_Byte  ; external subroutines
-extrn	LCD_Setup, LCD_Write_Message, LCD_Send_Byte_D
+extrn	UART_Setup, UART_Load_Byte, UART_Transmit_Byte  ; external subroutines
+extrn	LCD_Setup
 extrn	Encode_start
 extrn	LED_start
 	
@@ -25,35 +25,13 @@ setup:	bcf	CFGS	; point to Flash program memory
 	; ******* Main programme ****************************************
 start:     ;movlw	 'A'
 	   call          UART_Transmit_Byte
+
 test:      call          UART_Load_Byte
 	   call          Encode_start
-	   call		  LED_start
+	   call		 LED_start
            bra           test
-                
-           
-           call          LCD_Write_Message
-
+            
            goto       $                              ; goto current line in code   
 
-
-	       
-	
-	
-delay:	
-    movlw 0x08
-    movwf d1, A
-    movlw 0x2F
-    movwf d2, A
-    movlw 0x03
-    movwf d3, A
-    
-delay_loop:
-    decfsz	d1, A	; decrement until zero
-    bra	delay_loop
-    decfsz	d2, A
-    bra delay_loop
-    decfsz	d3, A
-    bra delay_loop
-    return
 	
 	end	rst
