@@ -26,8 +26,8 @@ setup:	bcf	CFGS	; point to Flash program memory
 start:     ;movlw	 'A'
 	   call          UART_Transmit_Byte
 test:      call          UART_Load_Byte
-	   ;call          Encode_start
-	   call		 LED_start
+	   call          Encode_start
+	   call		  LED_start
            bra           test
                 
            
