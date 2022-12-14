@@ -1,12 +1,12 @@
 #include <xc.inc>
     
-global  UART_Setup, UART_Transmit_Message, UART_Load_Byte, UART_Transmit_Byte, result
+global  UART_Setup,UART_Load_Byte, UART_Transmit_Byte, result
 
 psect	udata_acs   ; reserve data space in access ram
-UART_counter: ds    1	    ; reserve 1 byte for variable UART_counter
+;UART_counter: ds    1	    ; reserve 1 byte for variable UART_counter
 result: ds	    1 ; reserve 1 byte for variable UART_input
     
-psect	uart_code,class=CODE
+psect	uart_code, class=CODE
 UART_Setup:
     bsf	    SPEN	; enable
     bcf	    SYNC	; synchronous
@@ -20,15 +20,15 @@ UART_Setup:
 					; must set TRISC6 to 1
     return
 
-UART_Transmit_Message:	    ; Message stored at FSR2, length stored in W
-    movwf   UART_counter, A
+;UART_Transmit_Message:	    ; Message stored at FSR2, length stored in W
+    ;movwf   UART_counter, A
 
-UART_Loop_message:
-    movf    POSTINC2, W, A ; ;Accsess the value in FSR2 and automatically increaments it by '1' afterwards, and move the value to W
-    call    UART_Transmit_Byte
-    decfsz  UART_counter, A
-    bra	    UART_Loop_message
-    return
+;UART_Loop_message:
+    ;movf    POSTINC2, W, A ; ;Accsess the value in FSR2 and automatically increaments it by '1' afterwards, and move the value to W
+    ;call    UART_Transmit_Byte
+    ;decfsz  UART_counter, A
+    ;bra	    UART_Loop_message
+    ;return
     
 UART_Transmit_Byte:	    ; Transmits byte stored in W
     btfss   TX1IF	    ; TX1IF is set when TXREG1 is empty
@@ -41,7 +41,5 @@ UART_Load_Byte:	    ; Loads RECEIVED byte to W
     bra	    UART_Load_Byte
     movf    RCREG1, W ;READ 8-BIT DATA ONLY
     movwf   result
-    ;movlw   0x00
-    ;movwf   RCREG1
     return   
     
