@@ -30,6 +30,8 @@ test:      call          UART_Load_Byte
 	   call		 delay
 	   call		 delay
 	   call		 delay
+	   call		 delay
+	   call		 delay
 	   call		 LED_start
 	   call		 delay
 	   call		 LCD_clear_display
