@@ -28,6 +28,8 @@ start:     ;movlw	 'A'
 test:      call          UART_Load_Byte
 	   call          Encode_start
 	   call		 delay
+	   call		 delay
+	   call		 delay
 	   call		 LED_start
 	   call		 delay
 	   call		 LCD_clear_display
