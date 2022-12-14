@@ -5,11 +5,11 @@ extrn	LCD_Setup
 extrn	Encode_start
 extrn	LED_start
 	
-psect	udata_acs   ; reserve data space in access ram
-counter:    ds 1    ; reserve one byte for a counter variable
-d1:ds 1    ; reserve one byte for counter in the delay routine
-d2:ds 1    ; reserve one byte for counter in the delay routine
-d3:ds 1    ; reserve one byte for counter in the delay routine
+;psect	udata_acs   ; reserve data space in access ram
+;counter:    ds 1    ; reserve one byte for a counter variable
+;d1:ds 1    ; reserve one byte for counter in the delay routine
+;d2:ds 1    ; reserve one byte for counter in the delay routine
+;d3:ds 1    ; reserve one byte for counter in the delay routine
    
 psect	code, abs	
 rst: 	org 0x0
