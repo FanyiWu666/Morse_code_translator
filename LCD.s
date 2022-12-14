@@ -104,7 +104,9 @@ LCD_Enable:	    ; pulse enable bit LCD_E for 500ns
 	nop
 	bcf	LATB, LCD_E, A	    ; Writes data to LCD
 	return
-    
+
+;LCD_clear_display:
+	;movlw	
 ; ** a few delay routines below here as LCD timing can be quite critical ****
 LCD_delay_ms:		    ; delay given in ms in W
 	movwf	LCD_cnt_ms, A
