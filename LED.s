@@ -1,4 +1,5 @@
 #include <xc.inc>
+
 global LED_start
 
 extrn result
@@ -17,12 +18,10 @@ LED_start:
   cpfseq result, B
   bra nextA
   retlw 0x00
-  ;clrf TRISE (set PORTE to Outputs) ;Clears the contents of the specified register.
-  ;Set TRISE low (All outputs)
 
-;A: . _
+  ;A: . _
 
-  nextA: ;Convert 'A' to Morse code
+nextA: ;Convert 'A' to Morse code
     movlw 0x41 ;ASCII number for character 'A'
     cpfseq result, B 
     bra nextB
@@ -46,7 +45,7 @@ LED_start:
 
 ;B: _ . . .
 
-  nextB: ;Convert 'B' to Morse code
+nextB: ;Convert 'B' to Morse code
   movlw 0x42 ;ASCII number for character 'B'
   cpfseq result, B 
   bra nextC
@@ -84,7 +83,7 @@ LED_start:
 
 ;C: _ . _ .
 
-  nextC: ;Convert 'C' to Morse code
+nextC: ;Convert 'C' to Morse code
   movlw 0x43 ;ASCII number for character 'B'
   cpfseq result, B 
   bra nextD
@@ -122,7 +121,7 @@ LED_start:
   return 
 
 ;D: _ . .
-  nextD: ;Convert 'C' to Morse code
+nextD: ;Convert 'C' to Morse code
   movlw 0x44 ;ASCII number for character 'B'
   cpfseq result, B 
   bra nextE
@@ -151,7 +150,7 @@ LED_start:
   return
 
 ;E: .
-  nextE: ;Convert 'C' to Morse code
+nextE: ;Convert 'C' to Morse code
   movlw 0x45 ;ASCII number for character 'B'
   cpfseq result, B 
   bra nextF
@@ -165,7 +164,7 @@ LED_start:
   return
 
 ;F: . . _ .
-  nextF: ;Convert 'F' to Morse code
+nextF: ;Convert 'F' to Morse code
   movlw 0x46 ;ASCII number for character 'F'
   cpfseq result, B 
   bra nextG
@@ -202,7 +201,7 @@ LED_start:
   return
 
 ;G: _ _ .
-  nextG: ;Convert 'G' to Morse code
+nextG: ;Convert 'G' to Morse code
   movlw 0x47 ;ASCII number for character 'G'
   cpfseq result, B 
   bra nextH
@@ -1326,7 +1325,7 @@ delay:
     movwf d3, A
     
 delay_0:
-    decfsz	d1, f	; decrement until zero
+    decfsz	 d1, f	; decrement until zero
     bra	delay_1
     decfsz	d2, f
 delay_1:
