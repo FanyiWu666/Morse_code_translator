@@ -105,8 +105,14 @@ LCD_Enable:	    ; pulse enable bit LCD_E for 500ns
 	bcf	LATB, LCD_E, A	    ; Writes data to LCD
 	return
 
-;LCD_clear_display:
-	;movlw	
+LCD_clear_display:
+	;bcf	LCD_RS
+	movlw	00000001B
+	call	LCD_Send_Byte_I
+	movlw	10		; wait 40us
+	call	LCD_delay_x4us
+	return
+	
 ; ** a few delay routines below here as LCD timing can be quite critical ****
 LCD_delay_ms:		    ; delay given in ms in W
 	movwf	LCD_cnt_ms, A
