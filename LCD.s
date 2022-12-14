@@ -7,7 +7,7 @@ LCD_cnt_l:	ds 1   ; reserve 1 byte for variable LCD_cnt_l
 LCD_cnt_h:	ds 1   ; reserve 1 byte for variable LCD_cnt_h
 LCD_cnt_ms:	ds 1   ; reserve 1 byte for ms counter
 LCD_tmp:	ds 1   ; reserve 1 byte for temporary use
-;LCD_counter:	ds 1   ; reserve 1 byte for counting through nessage
+LCD_counter:	ds 1   ; reserve 1 byte for counting through nessage
 
 	LCD_E	EQU 5	; LCD enable bit
     	LCD_RS	EQU 4	; LCD register select bit
@@ -46,8 +46,8 @@ LCD_Setup:
 	call	LCD_delay_x4us
 	return
 
-;LCD_Write_Message:	    ; Message stored at FSR2, length stored in W
-	;movwf   LCD_counter, A
+LCD_Write_Message:	    ; Message stored at FSR2, length stored in W
+	movwf   LCD_counter, A
 LCD_Loop_message:
 	movf    POSTINC2, W, A
 	call    LCD_Send_Byte_D
