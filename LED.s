@@ -164,7 +164,7 @@ nextE: ;Convert 'C' to Morse code
   return
 
 ;F: . . _ .
-nextF: ;Convert 'F' to Morse code
+  nextF: ;Convert 'F' to Morse code
   movlw 0x46 ;ASCII number for character 'F'
   cpfseq result, B 
   bra nextG
@@ -201,7 +201,7 @@ nextF: ;Convert 'F' to Morse code
   return
 
 ;G: _ _ .
-nextG: ;Convert 'G' to Morse code
+  nextG: ;Convert 'G' to Morse code
   movlw 0x47 ;ASCII number for character 'G'
   cpfseq result, B 
   bra nextH
