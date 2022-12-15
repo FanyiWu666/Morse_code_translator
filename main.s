@@ -41,11 +41,11 @@ test:      call          UART_Load_Byte
            goto       $                              ; goto current line in code   
 
 delay:	
-    movlw 0x0D
+    movlw 0x0F
     movwf d1, A
-    movlw 0x0D
+    movlw 0x0F
     movwf d2, A
-    movlw 0x0D
+    movlw 0x0F
     movwf d3, A
     
 delay_0:
