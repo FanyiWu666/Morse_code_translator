@@ -164,7 +164,7 @@ nextE: ;Convert 'C' to Morse code
   return
 
 ;F: . . _ .
-  nextF: ;Convert 'F' to Morse code
+nextF: ;Convert 'F' to Morse code
   movlw 0x46 ;ASCII number for character 'F'
   cpfseq result, B 
   bra nextG
@@ -201,7 +201,7 @@ nextE: ;Convert 'C' to Morse code
   return
 
 ;G: _ _ .
-  nextG: ;Convert 'G' to Morse code
+nextG: ;Convert 'G' to Morse code
   movlw 0x47 ;ASCII number for character 'G'
   cpfseq result, B 
   bra nextH
@@ -234,7 +234,7 @@ nextE: ;Convert 'C' to Morse code
 
 
 ;H: . . . .
-  nextH: ;Convert 'H' to Morse code
+nextH: ;Convert 'H' to Morse code
   movlw 0x48 ;ASCII number for character 'H'
   cpfseq result, B 
   bra nextI
@@ -269,7 +269,7 @@ nextE: ;Convert 'C' to Morse code
   return
 
 ;I : . .
-  nextI: ;Convert 'I' to Morse code
+nextI: ;Convert 'I' to Morse code
   movlw 0x49 ;#ASCII number for character 'I'
   cpfseq result, B 
   bra nextJ
@@ -289,9 +289,9 @@ nextE: ;Convert 'C' to Morse code
   call delay ;#a ' '
   return
 
-  ;;J : . _ _ _
-  nextJ: ;#Convert 'J' to Morse code
-  movlw 0x50 ;#ASCII number for character 'J'
+  ;J : . _ _ _
+nextJ: ;#Convert 'J' to Morse code
+  movlw 0x4A ;#ASCII number for character 'J'
   cpfseq result, B 
   bra nextK
                 
@@ -331,8 +331,8 @@ nextE: ;Convert 'C' to Morse code
   return
 
 ;K: _ . _
-  nextK: ;#Convert 'K' to Morse code
-  movlw 0x51 ;#ASCII number for character 'K'
+nextK: ;#Convert 'K' to Morse code
+  movlw 0x4B ;#ASCII number for character 'K'
   cpfseq result, B 
   bra nextL
 
@@ -364,7 +364,7 @@ nextE: ;Convert 'C' to Morse code
 
 ;L: . _ . .
   nextL: ;#Convert 'L' to Morse code
-  movlw 0x52 ;#ASCII number for character 'L'
+  movlw 0x4C ;#ASCII number for character 'L'
   cpfseq result, B 
   bra nextM
 
@@ -401,7 +401,7 @@ nextE: ;Convert 'C' to Morse code
 
   ;M: _ _
   nextM: ;#Convert 'M' to Morse code
-  movlw 0x53 ;#ASCII number for character 'M'
+  movlw 0x4D ;#ASCII number for character 'M'
   cpfseq result, B 
   bra nextN
 
@@ -426,7 +426,7 @@ nextE: ;Convert 'C' to Morse code
 
   ;N: _ . 
   nextN: ;#Convert 'N' to Morse code
-  movlw 0x54 ;#ASCII number for character 'N'
+  movlw 0x4E ;#ASCII number for character 'N'
   cpfseq result, B 
   bra nextO
 
