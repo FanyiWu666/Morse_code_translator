@@ -674,6 +674,7 @@ nextY: ;Convert 'Y' to Morse code
 nextZ: ;Convert 'Z' to Morse code
   movlw 0x5A ;ASCII number for character 'Z'
   cpfseq result, B
+  bra nextA
   movlw '_'
   call LCD_Send_Byte_D
   movlw ' '
